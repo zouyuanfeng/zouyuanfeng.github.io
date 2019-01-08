@@ -79,6 +79,8 @@
 </body>
 
 <script>
+    // 存储服务
+    AV.init('vOm5cHrgDtRYkCeDnGuGfXzA-gzGzoHsz', 'vn5rkMUf2Y56dzFjFEzaFq8L');
 
     function add() {
         var pokemonName = $("#pokemonName").val();
@@ -117,9 +119,6 @@
             return
         }
 
-        // 存储服务
-        AV.init('vOm5cHrgDtRYkCeDnGuGfXzA-gzGzoHsz', 'vn5rkMUf2Y56dzFjFEzaFq8L');
-
         var pokemon = AV.Object.extend('pokemon');
 
         var p = new pokemon();
@@ -135,16 +134,18 @@
         }, function (error) {
             layer.msg("数据面板添加失败：" + error)
         });
-
-        var speedObj = AV.Object.extend('speed');
-        var s = new speedObj();
-        s.set("pokemon", pokemonName);
-        s.set("full", parseInt(speed) * 1.1 + 2828);
-        s.save().then(function (pokemon) {
-            layer.msg("速度排行榜添加成功")
-        }, function (error) {
-            layer.msg("速度排行榜添加失败：" + error)
-        });
+        //速度超过9000才加入排行榜
+        if (parseInt(speed) >= 9000) {
+            var speedObj = AV.Object.extend('speed');
+            var s = new speedObj();
+            s.set("pokemon", pokemonName);
+            s.set("full", (parseInt(speed) * 1.1 + 2828).toFixed(0));
+            s.save().then(function (pokemon) {
+                layer.msg("速度排行榜添加成功")
+            }, function (error) {
+                layer.msg("速度排行榜添加失败：" + error)
+            });
+        }
     }
 </script>
 </html>
