@@ -135,17 +135,17 @@
             layer.msg("数据面板添加失败：" + error)
         });
         //速度超过9000才加入排行榜
-        if (parseInt(speed) >= 9000) {
-            var speedObj = AV.Object.extend('speed');
-            var s = new speedObj();
-            s.set("pokemon", pokemonName);
-            s.set("full", (parseInt(speed) * 1.1 + 2828).toFixed(0));
-            s.save().then(function (pokemon) {
-                layer.msg("速度排行榜添加成功")
-            }, function (error) {
-                layer.msg("速度排行榜添加失败：" + error)
-            });
-        }
+        // if (parseInt(speed) >= 9000) {
+        //     var speedObj = AV.Object.extend('speed');
+        //     var s = new speedObj();
+        //     s.set("pokemon", pokemonName);
+        //     s.set("full", (parseInt(speed) * 1.1 + 2828).toFixed(0));
+        //     s.save().then(function (pokemon) {
+        //         layer.msg("速度排行榜添加成功")
+        //     }, function (error) {
+        //         layer.msg("速度排行榜添加失败：" + error)
+        //     });
+        // }
     }
 </script>
 </html>
