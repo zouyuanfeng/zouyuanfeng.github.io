@@ -66,7 +66,13 @@
                 <input type="number" class="form-control" id="speed" oninput="if(value.length>5)value=value.slice(0,5)">
             </div>
         </div>
-
+        <div class="form-group">
+            <label for="skin" class="col-sm-3 control-label">皮肤</label>
+            <div class="col-sm-9">
+                <!--120,100,100,0,0,0-->
+                <input type="text" class="form-control" id="skin">
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-sm-12">
                 <button type="button" class="btn btn-default  btn-lg" style="float: right" onclick="add()">提交
@@ -119,6 +125,11 @@
             return
         }
 
+        var skin = $("#skin").val();
+        if (skin && skin.length !== 17) {
+            layer.msg("皮肤输入错误");
+            return
+        }
         var pokemon = AV.Object.extend('pokemon');
 
         var p = new pokemon();
@@ -129,23 +140,12 @@
         p.set("sa", parseInt(sa));
         p.set("sd", parseInt(sd));
         p.set("speed", parseInt(speed));
+        p.set("skin", parseInt(skin));
         p.save().then(function (pokemon) {
             layer.msg("数据面板添加成功")
         }, function (error) {
             layer.msg("数据面板添加失败：" + error)
         });
-        //速度超过9000才加入排行榜
-        // if (parseInt(speed) >= 9000) {
-        //     var speedObj = AV.Object.extend('speed');
-        //     var s = new speedObj();
-        //     s.set("pokemon", pokemonName);
-        //     s.set("full", (parseInt(speed) * 1.1 + 2828).toFixed(0));
-        //     s.save().then(function (pokemon) {
-        //         layer.msg("速度排行榜添加成功")
-        //     }, function (error) {
-        //         layer.msg("速度排行榜添加失败：" + error)
-        //     });
-        // }
     }
 </script>
 </html>
