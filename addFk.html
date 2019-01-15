@@ -140,7 +140,9 @@
         p.set("sa", parseInt(sa));
         p.set("sd", parseInt(sd));
         p.set("speed", parseInt(speed));
-        p.set("skin", parseInt(skin));
+        if (skin) {
+            p.set("skin", skin);
+        }
         p.save().then(function (pokemon) {
             layer.msg("数据面板添加成功")
         }, function (error) {
