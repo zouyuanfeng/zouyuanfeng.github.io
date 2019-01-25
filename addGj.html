@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>添加数据</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <!-- 存储服务 -->
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js"></script>
+    <script src="layer/layer.js"></script>
+</head>
+<body style="margin: 0 auto;max-width: 500px;">
+<div style="margin: 16px;">
+    <div class="page-header">
+        <h1>狩猎场添加</h1>
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="pokemon1" class="col-sm-3 control-label">精灵1</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="pokemon1"></div>
+        </div>
+        <div class="form-group">
+            <label for="quantity1" class="col-sm-3 control-label">票数1</label>
+            <div class="col-sm-9">
+                <input type="number" class="form-control" id="quantity1"
+                       oninput="if(value.length>3)value=value.slice(0,3)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pokemon2" class="col-sm-3 control-label">精灵2</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="pokemon2">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="quantity2" class="col-sm-3 control-label">票数2</label>
+            <div class="col-sm-9">
+                <input type="number" class="form-control" id="quantity2"
+                       oninput="if(value.length>3)value=value.slice(0,3)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="startDate" class="col-sm-3 control-label">开始日期</label>
+            <div class="col-sm-9">
+                <input type="date" class="form-control" id="startDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-default  btn-lg" style="float: right" onclick="add()">提交
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+
+<script>
+    // 存储服务
+    AV.init('vOm5cHrgDtRYkCeDnGuGfXzA-gzGzoHsz', 'vn5rkMUf2Y56dzFjFEzaFq8L');
+    function add() {
+        var pokemon1 = $("#pokemon1").val();
+        if (!pokemon1) {
+            layer.msg("请输入精灵1");
+            return
+        }
+        var quantity1 = $("#quantity1").val();
+        if (!quantity1) {
+            layer.msg("请输入数量1");
+            return
+        }
+        var pokemon2 = $("#pokemon2").val();
+        if (!pokemon2) {
+            layer.msg("请输入精灵2");
+            return
+        }
+        var quantity2 = $("#quantity2").val();
+        if (!quantity2) {
+            layer.msg("请输入数量2");
+            return
+        }
+        var startDate = $("#startDate").val();
+        if (!startDate) {
+            layer.msg("请选择开始日期");
+            return
+        }
+        var pokemon = AV.Object.extend('huntingGround');
+        var p = new pokemon();
+        p.set("pokemon1", pokemon1);
+        p.set("quantity1", parseInt(quantity1));
+        p.set("pokemon2", pokemon2);
+        p.set("quantity2", parseInt(quantity2));
+        p.set("startDate", new Date(startDate));
+        p.save().then(function (pokemon) {
+            layer.msg("高级狩猎场数据添加成功")
+        }, function (error) {
+            layer.msg("高级狩猎场数据添加失败：" + error)
+        });
+    }
+</script>
+</html>
