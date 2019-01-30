@@ -67,12 +67,19 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="property" class="col-sm-3 control-label">属性</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="property" placeholder="普格飞毒地岩虫鬼钢火水草电超冰龙恶妖">
+            </div>
+        </div>
+        <div class="form-group">
             <label for="skin" class="col-sm-3 control-label">皮肤</label>
             <div class="col-sm-9">
                 <!--120,100,100,0,0,0-->
-                <input type="text" class="form-control" id="skin">
+                <input type="text" class="form-control" id="skin" placeholder="300,300,300,0,0,0">
             </div>
         </div>
+
         <div class="form-group">
             <div class="col-sm-12">
                 <button type="button" class="btn btn-default  btn-lg" style="float: right" onclick="add()">提交
@@ -124,6 +131,11 @@
             layer.msg("请输入速度值");
             return
         }
+        var property = $("#property").val();
+        if (!property) {
+            layer.msg("请输入属性");
+            return
+        }
 
         var skin = $("#skin").val();
         if (skin && skin.length !== 17) {
@@ -140,6 +152,7 @@
         p.set("sa", parseInt(sa));
         p.set("sd", parseInt(sd));
         p.set("speed", parseInt(speed));
+        p.set("property",property);
         if (skin) {
             p.set("skin", skin);
         }

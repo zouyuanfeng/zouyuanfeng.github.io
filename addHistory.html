@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>添加数据</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <!-- 存储服务 -->
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js"></script>
+    <script src="layer/layer.js"></script>
+</head>
+<body style="margin: 0 auto;max-width: 500px;">
+<div style="margin: 16px;">
+    <div class="page-header">
+        <h1>爆料数据添加</h1>
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="title" class="col-sm-3 control-label">标题</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="title"></div>
+        </div>
+        <div class="form-group">
+            <label for="url" class="col-sm-3 control-label">链接</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="url">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date" class="col-sm-3 control-label">日期</label>
+            <div class="col-sm-9">
+                <input type="date" class="form-control" id="date">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-default  btn-lg" style="float: right" onclick="add()">提交
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+
+<script>
+    // 存储服务
+    AV.init('vOm5cHrgDtRYkCeDnGuGfXzA-gzGzoHsz', 'vn5rkMUf2Y56dzFjFEzaFq8L');
+
+    function add() {
+        var title = $("#title").val();
+        if (!title) {
+            layer.msg("请输入标题");
+            return
+        }
+        var url = $("#url").val();
+        if (!url) {
+            layer.msg("请输入链接");
+            return
+        }
+
+        var date = $("#date").val();
+        if (!date) {
+            layer.msg("请选择日期");
+            return
+        }
+        var history = AV.Object.extend('history');
+        var p = new history();
+        p.set("title", title);
+        p.set("url", url);
+        p.set("startDate", new Date(date));
+        p.save().then(function (pokemon) {
+            layer.msg("版本爆料数据添加成功")
+        }, function (error) {
+            layer.msg("版本爆料数据添加失败：" + error)
+        });
+    }
+</script>
+</html>
