@@ -78,7 +78,7 @@
         var p = new history();
         p.set("title", title);
         p.set("url", url);
-        p.set("startDate", new Date(date));
+        p.set("date", new Date(date));
         p.save().then(function (pokemon) {
             layer.msg("版本爆料数据添加成功")
         }, function (error) {
