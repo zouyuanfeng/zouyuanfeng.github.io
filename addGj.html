@@ -70,6 +70,7 @@
 <script>
     // 存储服务
     AV.init('vOm5cHrgDtRYkCeDnGuGfXzA-gzGzoHsz', 'vn5rkMUf2Y56dzFjFEzaFq8L');
+
     function add() {
         var pokemon1 = $("#pokemon1").val();
         if (!pokemon1) {
@@ -104,7 +105,14 @@
         p.set("quantity2", parseInt(quantity2));
         p.set("startDate", new Date(startDate));
         p.save().then(function (pokemon) {
-            layer.msg("高级狩猎场数据添加成功")
+            layer.msg("高级狩猎场数据添加成功");
+
+            AV.Push.send({
+                channels: ['hunting'],
+                data: {
+                    alert: '狩猎场：' + pokemon1 + '/' + pokemon2
+                }
+            });
         }, function (error) {
             layer.msg("高级狩猎场数据添加失败：" + error)
         });
