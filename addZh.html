@@ -104,22 +104,22 @@
             }
 
         });
-        var id = getQueryString("id");
-        if (id) {
-            var query = new AV.Query('comprehensive');
-            query.get(id).then(function (res) {
-                var data = res.attributes
-                $("#name").val(data.name)
-                $("#type").val(data.type)
-                $("#comprehensiveType").val(data.cType.id)
-                $("#imageUrl").val(data.imageUrl)
-                $("#content").val(data.content)
-                $("#httpUrl").val(data.httpUrl)
-                $("#type").trigger('change');
-            }, function (error) {
-                // 异常处理
-            });
-        }
+        // var id = getQueryString("id");
+        // if (id) {
+        //     var query = new AV.Query('comprehensive');
+        //     query.get(id).then(function (res) {
+        //         var data = res.attributes
+        //         $("#name").val(data.name)
+        //         $("#type").val(data.type)
+        //         $("#comprehensiveType").val(data.cType.id)
+        //         $("#imageUrl").val(data.imageUrl)
+        //         $("#content").val(data.content)
+        //         $("#httpUrl").val(data.httpUrl)
+        //         $("#type").trigger('change');
+        //     }, function (error) {
+        //         // 异常处理
+        //     });
+        // }
     });
 
 
@@ -136,10 +136,10 @@
 
 
         var p = new comprehensive();
-        //这是修改
-        if (getQueryString("id")) {
-            p = AV.Object.createWithoutData('comprehensive', getQueryString("id"));
-        }
+        // //这是修改
+        // if (getQueryString("id")) {
+        //     p = AV.Object.createWithoutData('comprehensive', getQueryString("id"));
+        // }
 
         switch (type) {
             case 0:
@@ -177,13 +177,13 @@
         });
     }
 
-    function getQueryString(name) {
-        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) {
-            return decodeURIComponent(r[2]);
-        }
-        return null;
-    }
+    // function getQueryString(name) {
+    //     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    //     var r = window.location.search.substr(1).match(reg);
+    //     if (r != null) {
+    //         return decodeURIComponent(r[2]);
+    //     }
+    //     return null;
+    // }
 </script>
 </html>
