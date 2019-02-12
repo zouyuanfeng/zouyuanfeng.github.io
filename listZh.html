@@ -43,6 +43,7 @@
     var cql = 'select name from comprehensive where ' +
         'cType=pointer(\'comprehensiveType\',\'5c4b0f599f5454004702bbf0\') or ' +
         'cType=pointer(\'comprehensiveType\',\'5c4b0e9e9f5454004702aa95\') or ' +
+        'cType=pointer(\'comprehensiveType\',\'5c5e629b17b54d533afd1e92\') or ' +
         'cType=pointer(\'comprehensiveType\',\'5c4b11ce44d904004d6c838a\')' +
         ' order by createdAt desc limit 10';
     AV.Query.doCloudQuery(cql).then(function (data) {

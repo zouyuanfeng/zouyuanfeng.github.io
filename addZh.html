@@ -120,6 +120,10 @@
 
 
         var p = new comprehensive();
+        //这是修改
+        if (getQueryString("id")) {
+            p = AV.Object.createWithoutData('comprehensive', getQueryString("id"));
+        }
 
         switch (type) {
             case 0:
@@ -150,11 +154,23 @@
 
         p.set("name", name);
         p.set("type", type);
+
         p.save().then(function (pokemon) {
             layer.msg("综合大全添加成功")
         }, function (error) {
             layer.msg("综合大全添加失败：" + error)
         });
+
+
+    }
+
+    function getQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return decodeURIComponent(r[2]);
+        }
+        return null;
     }
 </script>
 </html>
