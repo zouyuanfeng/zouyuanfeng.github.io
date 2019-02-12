@@ -50,7 +50,7 @@
         // results 即为查询结果，它是一个 AV.Object 数组
         var results = data.results;
         $.each(results, function (index, item) {
-            debugger
+
             $("#tbody").append(" <tr>\n" +
                 "            <td>" + item.attributes.name + "</td>\n" +
                 "            <td><a href=\"addZh.html?id=" + item.id + "\">编辑</a></td>\n" +
