@@ -19,10 +19,10 @@
     <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js"></script>
     <script src="layer/layer.js"></script>
 </head>
-<body style="margin: 0 auto;max-width: 800px;">
+<body style="margin: 0 auto;max-width: 500px;">
 <div style="margin: 16px;">
     <div class="page-header">
-        <h1 style="text-align: center">综合数据添加</h1>
+        <h1>综合数据添加</h1>
     </div>
     <form class="form-horizontal">
         <div class="form-group">
@@ -37,6 +37,7 @@
                 <select class="form-control" id="comprehensiveType" title="请选择">
                     <option value="5c4b0f599f5454004702bbf0">丰源地图</option>
                     <option value="5c4b0e9e9f5454004702aa95">精灵分析</option>
+                    <option value="5c5e629b17b54d533afd1e92">特殊技能</option>
                     <option value="5c4b11ce44d904004d6c838a">其他</option>
                 </select>
             </div>
@@ -66,7 +67,7 @@
         <div class="form-group" style="display: none" id="divText">
             <label for="content" class="col-sm-3 control-label">内容</label>
             <div class="col-sm-9">
-                <textarea class="form-control" rows="15" id="content" placeholder="markdown语法"></textarea>
+                <textarea class="form-control" rows="8" id="content" placeholder="markdown语法"></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -103,22 +104,6 @@
             }
 
         })
-        var id = getQueryString("id");
-        if (id) {
-            var query = new AV.Query('comprehensive');
-            query.get(id).then(function (res) {
-                var data = res.attributes
-                $("#name").val(data.name)
-                $("#type").val(data.type)
-                $("#comprehensiveType").val(data.cType.id)
-                $("#imageUrl").val(data.imageUrl)
-                $("#content").val(data.content)
-                $("#httpUrl").val(data.httpUrl)
-                $("#type").trigger('change');
-            }, function (error) {
-                // 异常处理
-            });
-        }
     })
 
 
@@ -136,7 +121,7 @@
 
         var p = new comprehensive();
 
-        switch (value) {
+        switch (type) {
             case 0:
                 if (!$("#imageUrl").val()) {
                     layer.msg("请输入图片链接地址");
@@ -171,16 +156,5 @@
             layer.msg("综合大全添加失败：" + error)
         });
     }
-
-    function getQueryString(name) {
-        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) {
-            return unescape(r[2]);
-        }
-        return null;
-    }
-
-
 </script>
 </html>
