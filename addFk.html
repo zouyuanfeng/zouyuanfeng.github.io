@@ -73,6 +73,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="discount" class="col-sm-3 control-label">折扣</label>
+            <div class="col-sm-9">
+                <input type="number" class="form-control" id="discount" placeholder="折扣">
+            </div>
+        </div>
+        <div class="form-group">
             <label for="skin" class="col-sm-3 control-label">皮肤</label>
             <div class="col-sm-9">
                 <!--120,100,100,0,0,0-->
@@ -136,6 +142,11 @@
             layer.msg("请输入属性");
             return
         }
+        var discount = $("#discount").val();
+        if (!discount) {
+            layer.msg("请输入折扣");
+            return
+        }
 
         var skin = $("#skin").val();
         if (skin && skin.length !== 17) {
@@ -152,7 +163,8 @@
         p.set("sa", parseInt(sa));
         p.set("sd", parseInt(sd));
         p.set("speed", parseInt(speed));
-        p.set("property",property);
+        p.set("discount", parseFloat(discount));
+        p.set("property", property);
         if (skin) {
             p.set("skin", skin);
         }
