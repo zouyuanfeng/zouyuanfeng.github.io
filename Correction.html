@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+    <script src="layer/layer.js"></script>
     <title>修正面板</title>
 </head>
 
@@ -144,87 +145,87 @@
 
         switch (parseInt($("#character").val())) {
             case 0:
-                sa = parseInt(sa * 0.9);
-                speed = parseInt(speed * 1.1);
+                sa = Math.round(sa / 0.9);
+                speed = Math.round(speed / 1.1);
                 break;
             case 1:
-                pa = parseInt(pa * 0.9);
-                speed = parseInt(speed * 1.1);
+                pa = Math.round(pa / 0.9);
+                speed = Math.round(speed / 1.1);
                 break;
             case 2:
-                sa = parseInt(sa * 0.9);
-                pa = parseInt(pa * 1.1);
+                sa = Math.round(sa / 0.9);
+                pa = Math.round(pa / 1.1);
                 break;
             case 3:
-                pa = parseInt(pa * 0.9);
-                sa = parseInt(sa * 1.1);
+                pa = Math.round(pa / 0.9);
+                sa = Math.round(sa / 1.1);
                 break;
             case 4:
-                pa = parseInt(pa * 0.9);
-                pd = parseInt(pd * 1.1);
+                pa = Math.round(pa / 0.9);
+                pd = Math.round(pd / 1.1);
                 break;
             case 5:
-                sa = parseInt(sa * 0.9);
-                pd = parseInt(pd * 1.1);
+                sa = Math.round(sa / 0.9);
+                pd = Math.round(pd / 1.1);
                 break;
             case 6:
-                pa = parseInt(pa * 0.9);
-                sd = parseInt(sd * 1.1);
+                pa = Math.round(pa / 0.9);
+                sd = Math.round(sd / 1.1);
                 break;
             case 7:
-                sa = parseInt(sa * 0.9);
-                sd = parseInt(sd * 1.1);
+                sa = Math.round(sa / 0.9);
+                sd = Math.round(sd / 1.1);
                 break;
             case 8:
-                pd = parseInt(pd * 0.9);
-                pa = parseInt(pa * 1.1);
+                pd = Math.round(pd / 0.9);
+                pa = Math.round(pa / 1.1);
                 break;
             case 9:
-                sd = parseInt(sd * 0.9);
-                pa = parseInt(pa * 1.1);
+                sd = Math.round(sd / 0.9);
+                pa = Math.round(pa / 1.1);
                 break;
             case 10:
-                speed = parseInt(speed * 0.9);
-                pa = parseInt(pa * 1.1);
+                speed = Math.round(speed / 0.9);
+                pa = Math.round(pa / 1.1);
                 break;
 
             case 11:
-                pd = parseInt(pd * 0.9);
-                sa = parseInt(sa * 1.1);
+                pd = Math.round(pd / 0.9);
+                sa = Math.round(sa / 1.1);
                 break;
             case 12:
-                sd = parseInt(sd * 0.9);
-                sa = parseInt(sa * 1.1);
+                sd = Math.round(sd / 0.9);
+                sa = Math.round(sa / 1.1);
                 break;
             case 13:
-                speed = parseInt(speed * 0.9);
-                sa = parseInt(sa * 1.1);
+                speed = Math.round(speed / 0.9);
+                sa = Math.round(sa / 1.1);
                 break;
             case 14:
-                pd = parseInt(pd * 0.9);
-                speed = parseInt(speed * 1.1);
+                pd = Math.round(pd / 0.9);
+                speed = Math.round(speed / 1.1);
                 break;
             case 15:
-                sd = parseInt(sd * 0.9);
-                speed = parseInt(speed * 1.1);
+                sd = Math.round(sd / 0.9);
+                speed = Math.round(speed / 1.1);
                 break;
 
             case 16:
-                sd = parseInt(sd * 0.9);
-                pd = parseInt(pd * 1.1);
+                sd = Math.round(sd / 0.9);
+                pd = Math.round(pd / 1.1);
                 break;
             case 17:
-                speed = parseInt(speed * 0.9);
-                pd = parseInt(pd * 1.1);
+                speed = Math.round(speed / 0.9);
+                pd = Math.round(pd / 1.1);
                 break;
 
             case 18:
-                pd = parseInt(pd * 0.9);
-                sd = parseInt(sd * 1.1);
+                pd = Math.round(pd / 0.9);
+                sd = Math.round(sd / 1.1);
                 break;
             case 19:
-                speed = parseInt(speed * 0.9);
-                sd = parseInt(sd * 1.1);
+                speed = Math.round(speed / 0.9);
+                sd = Math.round(sd / 1.1);
                 break;
         }
 
