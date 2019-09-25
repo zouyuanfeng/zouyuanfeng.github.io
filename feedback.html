@@ -44,6 +44,27 @@
     }, function (error) {
         layer.msg(error)
     });
+
+    // AV.User.logIn('admin', 'cat!@#123').then(function (user) {
+    //     // 新建一个角色，并把为当前用户赋予该角色
+    //     var roleAcl = new AV.ACL();
+    //     roleAcl.setPublicReadAccess(true);
+    //     roleAcl.setPublicWriteAccess(false);
+    //
+    //     // 当前用户是该角色的创建者，因此具备对该角色的写权限
+    //     roleAcl.setWriteAccess(AV.User.current(), true);
+    //
+    //     //新建角色
+    //     var administratorRole = new AV.Role('Administrator', roleAcl);
+    //     administratorRole.save().then(function(role) {
+    //         // 创建成功
+    //     }).catch(function(error) {
+    //         console.log(error);
+    //     });
+    //     // 登录成功
+    // }, function (error) {
+    //     // 登录失败（可能是密码错误）
+    // });
 </script>
 </body>
 </html>
