@@ -13,21 +13,27 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
     <title>精灵价格表</title>
+    <style>
+        th{
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
-    <div class="page-header">
-        <h1 style="text-align: center">精灵价格表</h1>
-    </div>
-    <table class="table  table-bordered" style="text-align: center">
+    <!--<div class="page-header">-->
+        <!--<h1 style="text-align: center">精灵价格表</h1>-->
+    <!--</div>-->
+    <table class="table  table-striped table-bordered" style="text-align: center;margin: 8px 0">
         <thead>
         <tr>
-            <td>
+            <th>
                 价格
-            </td>
-            <td>
+            </th>
+            <th>
                 精灵名称
-            </td>
+            </th>
         </tr>
         </thead>
         <tbody id="body">
@@ -39,7 +45,7 @@
 </body>
 <script>
     $.get("price.json", function (data, status) {
-        console.info(data);
+        // console.info(data);
         $(data).each(function (index, item) {
             $("#body").append(
                 "<tr>" +
