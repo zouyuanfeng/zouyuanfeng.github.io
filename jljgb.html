@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <title>精灵价格表</title>
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1 style="text-align: center">精灵价格表</h1>
+    </div>
+    <table class="table  table-bordered" style="text-align: center">
+        <thead>
+        <tr>
+            <td>
+                价格
+            </td>
+            <td>
+                精灵名称
+            </td>
+        </tr>
+        </thead>
+        <tbody id="body">
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+<script>
+    $.get("price.json", function (data, status) {
+        console.info(data);
+        $(data).each(function (index, item) {
+            $("#body").append(
+                "<tr>" +
+                "<td>" + item.price +"</td>" +
+                "<td>" + item.name +"</td>" +
+                "</tr>");
+        })
+
+    });
+
+</script>
+</html>
